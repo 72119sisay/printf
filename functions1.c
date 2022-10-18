@@ -16,7 +16,7 @@ int print_unsigned(va_list types, char buffer[],
 	int i = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(types, unsigned long int);
 
-	num = convert_size_unsigned(num, size);
+	num = convert_size_unsgnd(num, size);
 
 	if (num == 0)
 		buffer[i--] = '0';
@@ -31,7 +31,7 @@ int print_unsigned(va_list types, char buffer[],
 
 	i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
 /**
  * print_octal - prints an unsigned number in octal notation
@@ -46,14 +46,14 @@ int print_unsigned(va_list types, char buffer[],
 int print_octal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int i = BUFF_SIZE -2;
+	int i = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(types, unsigned long int);
 	unsigned long int num = va_arg(types, unsigned long int);
 	unsigned long int init_num = num;
 
 	UNUSED(width);
 
-	num = convert_size_unsigned(num, size);
+	num = convert_size_unsgnd(num, size);
 
 	if (num == 0)
 		buffer[i--] = '0';
@@ -71,7 +71,7 @@ int print_octal(va_list types, char buffer[],
 
 	i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
 /**
  * print_hexadecimal - prints an unsigned number in hexadecimal notation
@@ -83,11 +83,11 @@ int print_octal(va_list types, char buffer[],
  * @size: size specifier
  * Return: number of chars printed
  */
-int print_hexadecimal(va_list types, char buffer[], 
+int print_hexadecimal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	return (print_hexa(types, "0123456789abcdef", buffer, 
-		flags, 'x', width, precision, size));
+	return (print_hexa(types, "0123456789abcdef", buffer,
+			flags, 'x', width, precision, size));
 }
 /**
  * print_hexa_upper - prints an unsigned number in upper hexadecimal notation
@@ -127,7 +127,7 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 
 	UNUSED(width);
 
-	num = convert_size_unsigned(num, size);
+	num = convert_size_unsgnd(num, size);
 
 	if (num == 0)
 		buffer[i--] = '0';
@@ -148,5 +148,5 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 
 	i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
